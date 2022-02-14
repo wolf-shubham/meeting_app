@@ -55,7 +55,6 @@ const Register = () => {
                     className
                 >REGISTER
                 </Button>
-                <div className="line">try </div>
             </div>
         </>
     )
