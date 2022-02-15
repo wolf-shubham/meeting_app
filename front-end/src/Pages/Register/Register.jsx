@@ -15,7 +15,6 @@ const Register = () => {
                     Register
                 </Typography>
                 <TextField
-                    variant="outlined"
                     margin="normal"
                     required
                     fullWidth
@@ -26,7 +25,6 @@ const Register = () => {
                     autoFocus
                 />
                 <TextField
-                    variant="outlined"
                     margin="normal"
                     required
                     fullWidth
@@ -34,13 +32,11 @@ const Register = () => {
                     label="Email Address"
                     name="email"
                     autoComplete="email"
-                    autoFocus
                 />
                 <TextField
-                    variant="outlined"
                     margin="normal"
-                    required
                     fullWidth
+                    required
                     name="password"
                     label="Password"
                     type="password"
