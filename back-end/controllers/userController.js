@@ -1,5 +1,7 @@
 const bcrypt = require('bcrypt')
 const User = require('../models/userModel')
+const generateToken = require('../middlewares/generateToken')
+
 
 const userRegister = async (req, res) => {
     try {
@@ -30,10 +32,18 @@ const userLogin = async (req, res) => {
         const user = await User.findOne({ email })
         if (user) {
             const comparePassword = await bcrypt.compare(password, user.password)
+            const token = generateToken(user._id)
             if (!comparePassword) {
-                return res.status(401).json('invalid credantials')
+                return res.status(400).json('invalid credantials')
             }
-            return res.status(201).json(user)
+            return res.status(201).json({
+                _id: user._id,
+                name: user.name,
+                email: user.email,
+                isAdmin: user.isAdmin,
+                pic: user.pic,
+                token: generateToken(user._id),
+            })
         }
     } catch (error) {
         res.status(400).json(error)

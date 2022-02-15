@@ -19,7 +19,7 @@ function Home() {
     return (
         <>
             <h1>Home Page</h1>
-            <Link to='addmeeting'>
+            <Link to='/addmeeting'>
                 <Button>Add Meeting</Button>
             </Link>
             {
