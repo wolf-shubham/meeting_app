@@ -1,9 +1,21 @@
 import { Button, Card } from '@material-ui/core'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import meetings from '../../data/data.js'
+import axios from 'axios'
 
 function Home() {
+
+    const [meeting, setMeeting] = useState([])
+
+    const fetchMeeting = async () => {
+        const { data } = await axios.get('/meeting/getMeetings')
+        setMeeting(data)
+    }
+    console.log(meeting)
+    useEffect(() => {
+        fetchMeeting()
+    }, [])
+
     return (
         <>
             <h1>Home Page</h1>
@@ -11,8 +23,8 @@ function Home() {
                 <Button>Add Meeting</Button>
             </Link>
             {
-                meetings.map(meeting => (
-                    <Card>
+                meeting.map(meeting => (
+                    <Card key={meeting._id}>
                         <span>
                             <h1>{meeting.title}</h1>
                         </span>
@@ -20,7 +32,7 @@ function Home() {
                         <h4>Created At :{meeting.date}</h4>
                         <div>
                             <Button href={`/meeting/${meeting._id}`}>Edit</Button>
-                            <Button variant='danger'>Delete</Button>
+                            <Button >Delete</Button>
                         </div>
                     </Card>
                 ))
