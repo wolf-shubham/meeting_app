@@ -14,6 +14,7 @@ const Register = () => {
     const [password, setPassword] = useState('')
     const [pic, setPic] = useState('')
 
+
     const history = useHistory()
 
     const dispatch = useDispatch()

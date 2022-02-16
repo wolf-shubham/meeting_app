@@ -18,8 +18,11 @@ export const loginAction = (email, password) => async (dispatch) => {
         // console.log(data)
         localStorage.setItem('userInfo', JSON.stringify(data))
     } catch (error) {
-        dispatch({ type: USER_LOGIN_FAIL, payload: error })
-        console.log(error)
+        dispatch({
+            type: USER_LOGIN_FAIL, payload: error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message
+        })
     }
 }
 
@@ -45,7 +48,11 @@ export const userRegisterAction = (name, email, password, pic) => async (dispatc
         localStorage.setItem('userInfo', JSON.stringify(data))
 
     } catch (error) {
-        dispatch({ type: USER_REGISTER_FAIL, payload: error })
+        dispatch({
+            type: USER_REGISTER_FAIL, payload: error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message
+        })
         console.log(error)
     }
 }
