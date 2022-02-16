@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 
 const meetings = require('./routes/meetings')
 const userRoutes = require('./routes/userRoutes')
+const errorHandler = require('./middlewares/errorMiddleware')
 
 const app = express()
 app.use(express.json())
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 5000
 
 app.use('/meeting', meetings)
 app.use('/user', userRoutes)
+app.use(errorHandler)
 
 
 mongoose.connect(process.env.MONGODB_URL, {

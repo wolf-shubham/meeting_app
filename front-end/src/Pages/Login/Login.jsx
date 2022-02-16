@@ -1,31 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Login.css"
 import logo from '../../images/background.png'
 import { Avatar, Button, Checkbox, FormControlLabel, TextField, Typography } from '@material-ui/core'
-import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { loginAction } from '../../stateManagement/actions/userActions'
+import { useHistory } from 'react-router-dom'
 
 export const Login = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const history = useHistory()
+
+    const dispatch = useDispatch()
+    const userLogin = useSelector((state) => state.userLogin)
+    const { userInfo, loading, error } = userLogin
+
+    useEffect(() => {
+        if (userInfo) {
+            history.push('/')
+        }
+    }, [history, userInfo])
 
     const submitHandle = async (e) => {
         e.preventDefault()
-        console.log(email, password)
-        try {
-            const config = {
-                headers: {
-                    'Content-type': "application/json"
-                }
-            }
-            const { data } = await axios.post('/user/login', {
-                email, password
-            }, config)
-            console.log(data)
-            localStorage.setItem('userInfo', JSON.stringify(data))
-        } catch (error) {
-            console.log(error)
-        }
+        dispatch(loginAction(email, password))
     }
 
 

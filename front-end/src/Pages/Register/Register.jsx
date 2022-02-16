@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from '../../images/background.png'
 import { Avatar, Button, TextField, Typography } from '@material-ui/core'
 import './Register.css'
-import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { userRegisterAction } from '../../stateManagement/actions/userActions'
+import { useHistory } from 'react-router-dom'
 
 
 const Register = () => {
@@ -12,21 +14,20 @@ const Register = () => {
     const [password, setPassword] = useState('')
     const [pic, setPic] = useState('')
 
+    const history = useHistory()
+
+    const dispatch = useDispatch()
+    const userRegister = useSelector(state => state.userRegister)
+    const { userInfo, loading, error } = userRegister
+    useEffect(() => {
+        if (userInfo) {
+            history.push('/')
+        }
+    }, [history, userInfo])
+
     const submitHandler = async (e) => {
         e.preventDefault()
-        try {
-            const config = {
-                headers: {
-                    'Content-type': "application/json"
-                }
-            }
-            const { data } = await axios.post('/user/signup', {
-                name, email, password, pic
-            }, config)
-            console.log(data)
-        } catch (error) {
-            console.log(error)
-        }
+        dispatch(userRegisterAction(name, email, password, pic))
     }
 
     return (
