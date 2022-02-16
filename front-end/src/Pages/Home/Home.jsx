@@ -1,20 +1,21 @@
 import { Button, Card } from '@material-ui/core'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { getMeetings } from '../../stateManagement/actions/meetingActions'
 
 function Home() {
 
-    const [meeting, setMeeting] = useState([])
+    const dispatch = useDispatch()
 
-    const fetchMeeting = async () => {
-        const { data } = await axios.get('/meeting/getMeetings')
-        setMeeting(data)
-    }
-    console.log(meeting)
+    const userMeeting = useSelector(state => state.userMeeting)
+    const { loading, meetings, error } = userMeeting
+
+
+    console.log(meetings)
     useEffect(() => {
-        fetchMeeting()
-    }, [])
+        dispatch(getMeetings())
+    }, [dispatch])
 
     return (
         <>
@@ -23,12 +24,12 @@ function Home() {
                 <Button>Add Meeting</Button>
             </Link>
             {
-                meeting.map(meeting => (
+                meetings?.map(meeting => (
                     <Card key={meeting._id}>
                         <span>
                             <h1>{meeting.title}</h1>
                         </span>
-                        <h3>{meeting.desc}</h3>
+                        <h3>{meeting.description}</h3>
                         <h4>Created At :{meeting.date}</h4>
                         <div>
                             <Button href={`/meeting/${meeting._id}`}>Edit</Button>

@@ -52,9 +52,9 @@ const updateMeeting = async (req, res) => {
 
 const deleteMeeting = async (req, res) => {
     const meeting = await Meeting.findById(req.params.id)
-    if (meeting.user.toString() !== req.user._id.toString()) {
-        return res.status(403).json('you can not delete others meeting')
-    }
+    // if (meeting.user.toString() !== req.user._id.toString()) {
+    //     return res.status(403).json('you can not delete others meeting')
+    // }
     if (meeting) {
         await meeting.remove()
         return res.status(201).json({ message: 'meeting deleted.' })
