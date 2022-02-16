@@ -7,10 +7,9 @@ const meetingSchema = mongoose.Schema(
             type: String,
             required: true
         },
-        desc: {
+        description: {
             type: String,
             required: true,
-            unique: true
         },
         category: {
             type: String,
