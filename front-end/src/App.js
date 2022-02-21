@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from './Pages/Home/Home';
 import Error from './Pages/Error/Error';
 import CreateMeeting from './Pages/AddMeeting/CreateMeeting';
+import EditMeeting from './Pages/EditMeeting/EditMeeting'
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path='/login' component={Login} />
         <Route path='/register' component={Register} />
         <Route path='/addmeeting' component={CreateMeeting} />
+        <Route path='/meeting/:id' component={EditMeeting} />
         <Route path='*' component={Error} />
       </Switch>
       <Footer />

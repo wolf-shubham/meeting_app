@@ -12,6 +12,9 @@ function Home() {
     const { userInfo } = userMeeting
     const { loading, meetings, error } = userMeeting
 
+    const updateMeeting = useSelector((state) => state.updateMeeting)
+    const { success } = updateMeeting
+
     const history = useHistory()
 
     console.log(meetings)
@@ -20,7 +23,7 @@ function Home() {
         if (!userInfo) {
             history.push('/')
         }
-    }, [dispatch, history, userInfo])
+    }, [dispatch, history, userInfo, success])
 
     return (
         <>

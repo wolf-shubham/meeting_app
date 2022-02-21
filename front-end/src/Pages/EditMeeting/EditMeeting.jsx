@@ -1,19 +1,32 @@
-import { Button, TextField } from '@material-ui/core'
-import React, { useState } from 'react'
+import { Button, CircularProgress, TextField } from '@material-ui/core'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
-import { createMeetingActions } from '../../stateManagement/actions/meetingActions'
+import { updateMeetingActions } from '../../stateManagement/actions/meetingActions'
 
-function CreateMeeting() {
-    const history = useHistory()
+function EditMeeting({ match, history }) {
+
     const dispatch = useDispatch()
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [category, setCategory] = useState('')
 
-    const createMeeting = useSelector((state) => state.createMeeting)
-    const { loading, meeting, error } = createMeeting
+    const updateMeeting = useSelector((state) => state.updateMeeting)
+    const { loading, meeting, error } = updateMeeting
+
+
+
+    useEffect(() => {
+        const fetching = async () => {
+            const { data } = await axios.get(`/meeting/${match.params.id}`)
+            setTitle(data.title)
+            setDescription(data.description)
+            setCategory(data.category)
+            // console.log(data)
+        }
+        fetching()
+    }, [match.params.id])
 
     const resetHandler = () => {
         setTitle('')
@@ -21,9 +34,9 @@ function CreateMeeting() {
         setCategory('')
     }
 
-    const submitHandler = (e) => {
+    const updateHandler = (e) => {
         e.preventDefault();
-        dispatch(createMeetingActions(title, description, category))
+        dispatch(updateMeetingActions(match.params.id, title, description, category))
         resetHandler()
         history.push('/')
     }
@@ -32,7 +45,8 @@ function CreateMeeting() {
     return (
         <>
             <div>Create Meeting</div>
-            <form className='' onSubmit={submitHandler} noValidate>
+            {loading && <CircularProgress />}
+            <form className='' onSubmit={updateHandler} noValidate>
                 <TextField
                     variant="outlined"
                     margin="normal"
@@ -41,6 +55,7 @@ function CreateMeeting() {
                     id="title"
                     label="Title"
                     name="Title"
+                    value={title}
                     onChange={(e) => setTitle(e.target.value)}
                 />
                 <TextField
@@ -51,6 +66,7 @@ function CreateMeeting() {
                     id="description"
                     label="Meeting Description"
                     name="Description"
+                    value={description}
                     onChange={(e) => setDescription(e.target.value)}
 
                 />
@@ -62,6 +78,7 @@ function CreateMeeting() {
                     id="category"
                     label="Category"
                     name="Category"
+                    value={category}
                     onChange={(e) => setCategory(e.target.value)}
 
                 />
@@ -81,12 +98,12 @@ function CreateMeeting() {
                     variant="contained"
                     color="primary"
                     className
-                >Add Meeting
+                >Update Meeting
                 </Button>
                 <br />
                 <br />
                 <Button
-                    type="submit"
+                    // stype="submit"
                     fullWidth
                     variant="contained"
                     color="primary"
@@ -99,4 +116,6 @@ function CreateMeeting() {
     )
 }
 
-export default CreateMeeting
+
+
+export default EditMeeting
