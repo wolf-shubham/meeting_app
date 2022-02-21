@@ -2,7 +2,7 @@ const Meeting = require("../models/meetingsModel")
 
 const getMeetings = async (req, res) => {
     const meeting = await Meeting.find({ user: req.user._id })
-    res.json(meeting)
+    return res.json(meeting)
 }
 
 const createMeeting = async (req, res) => {

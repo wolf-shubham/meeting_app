@@ -1,6 +1,6 @@
-import { Button, Card } from '@material-ui/core'
+import { Button, Card, CircularProgress } from '@material-ui/core'
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMeetings } from '../../stateManagement/actions/meetingActions'
 
@@ -9,13 +9,18 @@ function Home() {
     const dispatch = useDispatch()
 
     const userMeeting = useSelector(state => state.userMeeting)
+    const { userInfo } = userMeeting
     const { loading, meetings, error } = userMeeting
 
+    const history = useHistory()
 
     console.log(meetings)
     useEffect(() => {
         dispatch(getMeetings())
-    }, [dispatch])
+        if (!userInfo) {
+            history.push('/')
+        }
+    }, [dispatch, history, userInfo])
 
     return (
         <>
@@ -23,6 +28,7 @@ function Home() {
             <Link to='/addmeeting'>
                 <Button>Add Meeting</Button>
             </Link>
+            {loading && <CircularProgress />}
             {
                 meetings?.map(meeting => (
                     <Card key={meeting._id}>
