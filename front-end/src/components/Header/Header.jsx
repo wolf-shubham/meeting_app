@@ -21,6 +21,7 @@ function Header() {
                 <Link to='/' className='homelink'>
                     <div className="line"><h1 className='title'>.meeting</h1></div>
                 </Link>
+                <h2>{userInfo.name}</h2>
                 <Button
                     type="submit"
                     variant="contained"
