@@ -2,7 +2,7 @@ import { Button, Card, CircularProgress } from '@material-ui/core'
 import React, { useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { getMeetings } from '../../stateManagement/actions/meetingActions'
+import { deleteMeetingActions, getMeetings } from '../../stateManagement/actions/meetingActions'
 
 function Home() {
 
@@ -15,7 +15,15 @@ function Home() {
     const updateMeeting = useSelector((state) => state.updateMeeting)
     const { success } = updateMeeting
 
+    const deleteMeeting = useSelector((state) => state.deleteMeeting)
+    const { loading: lodingDelete, success: successDelete } = deleteMeeting
     const history = useHistory()
+
+    const deleteHandler = (id) => {
+        if (window.confirm("Are you sure you want to DELETE ?")) {
+            dispatch(deleteMeetingActions(id))
+        }
+    }
 
     console.log(meetings)
     useEffect(() => {
@@ -23,7 +31,7 @@ function Home() {
         if (!userInfo) {
             history.push('/')
         }
-    }, [dispatch, history, userInfo, success])
+    }, [dispatch, history, userInfo, success, successDelete])
 
     return (
         <>
@@ -42,7 +50,7 @@ function Home() {
                         <h4>Created At :{meeting.date}</h4>
                         <div>
                             <Button href={`/meeting/${meeting._id}`}>Edit</Button>
-                            <Button >Delete</Button>
+                            <Button onClick={() => deleteHandler(meeting._id)}>Delete</Button>
                         </div>
                     </Card>
                 ))
