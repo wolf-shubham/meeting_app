@@ -3,6 +3,7 @@
 .header {
     width: 100%;
     height: 10vh;
+    margin-top: 10px;
     margin-bottom: 30px;
     display: flex;
     flex-direction: row;
@@ -19,6 +20,7 @@
 .homelink {
     text-decoration: none;
     color: gray;
+    flex: 6;
 }
 
 .title {
@@ -27,4 +29,13 @@
     margin-top: -10px;
     letter-spacing: 3px;
     font-weight: 600;
+}
+
+.userName {
+    margin: auto;
+    flex: 2;
+}
+
+.btn {
+    margin-right: 30px;
 }
