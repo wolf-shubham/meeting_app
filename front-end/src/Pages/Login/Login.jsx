@@ -31,51 +31,53 @@ export const Login = () => {
 
     return (
         <>
-            <img src={logo} alt="meeting" />
-            <div className='bg'>Login</div>
-            <div className="login">
-                <Avatar className=''>
-                </Avatar>
-                <Typography component="h1" variant="h5">
-                    Login
-                </Typography>
-                <form onSubmit={submitHandle}>
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="email"
-                        label="Email Address"
-                        name="email"
-                        value={email}
-                        autoFocus
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        required
-                        fullWidth
-                        name="password"
-                        label="Password"
-                        type="password"
-                        id="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
-                        label="Remember me"
-                    />
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                    >LOGIN
-                    </Button>
-                </form>
+            <div className="loginComponent">
+
+                <img src={logo} alt="meeting" className='bgImage' />
+                <div className="login">
+                    <Avatar className='avatar'>
+                    </Avatar>
+                    <h1 className='titleLogin'>LOGIN</h1>
+                    <form onSubmit={submitHandle} className='loginForm'>
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="email"
+                            label="Email Address"
+                            name="email"
+                            value={email}
+                            autoFocus
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
+                            name="password"
+                            label="Password"
+                            type="password"
+                            id="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <FormControlLabel
+                            control={<Checkbox value="remember" color="primary" />}
+                            label="Remember me"
+                        />
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                        >LOGIN
+                        </Button>
+                        <h3 className='registerLink'>New Here ? <a href="/register">Register</a></h3>
+                    </form>
+
+                </div>
             </div>
 
         </>

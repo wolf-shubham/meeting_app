@@ -33,64 +33,64 @@ const Register = () => {
 
     return (
         <>
-            <img src={logo} alt="meeting" />
-            <div className="login">
-                <Avatar className=''>
-                </Avatar>
-                <Typography component="h1" variant="h5">
-                    Register
-                </Typography>
-                <form onSubmit={submitHandler}>
-                    <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="name"
-                        label="Name"
-                        name="name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    />
-                    <TextField
-                        margin="normal"
-                        required
-                        fullWidth
-                        id="email"
-                        label="Email Address"
-                        name="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <TextField
-                        margin="normal"
-                        fullWidth
-                        required
-                        name="password"
-                        label="Password"
-                        type="password"
-                        id="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <TextField
-                        margin="normal"
-                        fullWidth
-                        name="pic"
-                        label="Profile Pic"
-                        type="file"
-                        id="pic"
-                        value={pic}
-                        onChange={(e) => setPic(e.target.value)}
-                    />
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        className
-                    >REGISTER
-                    </Button>
-                </form>
+            <div className="registerComponent">
+                <img src={logo} alt="meeting" className='bgImage' />
+                <div className="register">
+                    <Avatar className='avatar'>
+                    </Avatar>
+                    <h1 className='titleRegister'>REGISTER</h1>
+                    <form onSubmit={submitHandler} className='registerForm'>
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="name"
+                            label="Name"
+                            name="name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="email"
+                            label="Email Address"
+                            name="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <TextField
+                            margin="normal"
+                            fullWidth
+                            required
+                            name="password"
+                            label="Password"
+                            type="password"
+                            id="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <TextField
+                            margin="normal"
+                            fullWidth
+                            name="pic"
+                            label="Profile Pic"
+                            type="file"
+                            id="pic"
+                            value={pic}
+                            onChange={(e) => setPic(e.target.value)}
+                        />
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                        >REGISTER
+                        </Button>
+                        <h3 className='loginLink'>Already had an account ! <a href="/register">Login</a></h3>
+                    </form>
+                </div>
             </div>
         </>
     )
