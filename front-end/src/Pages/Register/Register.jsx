@@ -22,7 +22,7 @@ const Register = () => {
     const { userInfo, loading, error } = userRegister
     useEffect(() => {
         if (userInfo) {
-            history.push('/')
+            history.push('/home')
         }
     }, [history, userInfo])
 

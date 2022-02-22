@@ -15,6 +15,13 @@ function Header() {
         dispatch(userLogout())
         history.push('/login')
     }
+
+    const loginHandle = () => {
+        history.push('/login')
+    }
+    const registerHandle = () => {
+        history.push('/register')
+    }
     return (
         <>
             <div className="header line">
@@ -22,13 +29,33 @@ function Header() {
                     <div ><h1 className='title'>.meeting</h1></div>
                 </Link>
                 <h2>{userInfo?.name}</h2>
-                <Button
-                    type="submit"
-                    variant="contained"
-                    color="primary"
-                    onClick={logoutHandle}
-                >LOGOUT
-                </Button>
+                {
+                    userInfo
+                        ? <Button
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            onClick={logoutHandle}
+                        >LOGOUT
+                        </Button>
+                        :
+                        <><Button
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            onClick={loginHandle}
+                        >LOGIN
+                        </Button>
+                            <Button
+                                type="submit"
+                                variant="contained"
+                                color="primary"
+                                onClick={registerHandle}
+                            >REGISTER
+                            </Button></>
+
+                }
+
 
             </div>
         </>
