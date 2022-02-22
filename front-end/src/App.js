@@ -10,12 +10,12 @@ import EditMeeting from './Pages/EditMeeting/EditMeeting'
 
 
 function App() {
-  const user = true
+  // const user = true
   return (
     <BrowserRouter>
       <Header />
       <Switch>
-        <Route path='/' exact>{user ? <Home /> : <Register />}</Route>
+        <Route path='/' exact><Home /></Route>
         <Route path='/login' component={Login} />
         <Route path='/register' component={Register} />
         <Route path='/addmeeting' component={CreateMeeting} />

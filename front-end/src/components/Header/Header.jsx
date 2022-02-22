@@ -10,18 +10,18 @@ function Header() {
     const dispatch = useDispatch()
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
-    // console.log(userInfo)
+    // console.log(userInfo.name)
     const logoutHandle = () => {
         dispatch(userLogout())
         history.push('/login')
     }
     return (
         <>
-            <div className="header">
+            <div className="header line">
                 <Link to='/' className='homelink'>
-                    <div className="line"><h1 className='title'>.meeting</h1></div>
+                    <div ><h1 className='title'>.meeting</h1></div>
                 </Link>
-                <h2>{userInfo.name}</h2>
+                <h2>{userInfo?.name}</h2>
                 <Button
                     type="submit"
                     variant="contained"

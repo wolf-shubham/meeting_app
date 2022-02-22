@@ -16,7 +16,7 @@ function Home() {
     const { success } = updateMeeting
 
     const deleteMeeting = useSelector((state) => state.deleteMeeting)
-    const { loading: lodingDelete, success: successDelete } = deleteMeeting
+    const { loading: loadingDelete, success: successDelete } = deleteMeeting
     const history = useHistory()
 
     const deleteHandler = (id) => {
@@ -25,7 +25,7 @@ function Home() {
         }
     }
 
-    console.log(meetings)
+    // console.log(meetings)
     useEffect(() => {
         dispatch(getMeetings())
         if (!userInfo) {
