@@ -7,6 +7,7 @@ import Home from './Pages/Home/Home';
 import Error from './Pages/Error/Error';
 import CreateMeeting from './Pages/AddMeeting/CreateMeeting';
 import EditMeeting from './Pages/EditMeeting/EditMeeting'
+import LandingPage from './Pages/LandingPage/LandingPage';
 
 
 function App() {
@@ -15,7 +16,8 @@ function App() {
     <BrowserRouter>
       <Header />
       <Switch>
-        <Route path='/' exact><Home /></Route>
+        <Route path='/' exact component={LandingPage} />
+        <Route path='/home' component={Home} />
         <Route path='/login' component={Login} />
         <Route path='/register' component={Register} />
         <Route path='/addmeeting' component={CreateMeeting} />

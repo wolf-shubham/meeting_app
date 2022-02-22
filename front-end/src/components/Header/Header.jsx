@@ -18,7 +18,7 @@ function Header() {
     return (
         <>
             <div className="header line">
-                <Link to='/' className='homelink'>
+                <Link to='/home' className='homelink'>
                     <div ><h1 className='title'>.meeting</h1></div>
                 </Link>
                 <h2>{userInfo?.name}</h2>

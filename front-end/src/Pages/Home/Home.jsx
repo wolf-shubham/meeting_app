@@ -29,7 +29,7 @@ function Home() {
     useEffect(() => {
         dispatch(getMeetings())
         if (!userInfo) {
-            history.push('/')
+            history.push('/home')
         }
     }, [dispatch, history, userInfo, success, successDelete])
 

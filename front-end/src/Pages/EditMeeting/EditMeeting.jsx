@@ -38,7 +38,7 @@ function EditMeeting({ match, history }) {
         e.preventDefault();
         dispatch(updateMeetingActions(match.params.id, title, description, category))
         resetHandler()
-        history.push('/')
+        history.push('/home')
     }
 
 

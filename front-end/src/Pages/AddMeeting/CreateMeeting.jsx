@@ -25,7 +25,7 @@ function CreateMeeting() {
         e.preventDefault();
         dispatch(createMeetingActions(title, description, category))
         resetHandler()
-        history.push('/')
+        history.push('/home')
     }
 
 

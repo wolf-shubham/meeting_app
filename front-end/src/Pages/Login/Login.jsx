@@ -19,7 +19,7 @@ export const Login = () => {
 
     useEffect(() => {
         if (userInfo) {
-            history.push('/')
+            history.push('/home')
         }
     }, [history, userInfo])
 
