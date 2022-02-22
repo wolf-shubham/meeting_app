@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Redressed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200&family=Redressed&family=Work+Sans:wght@300&display=swap');
 
 .header {
     width: 100%;
@@ -29,13 +30,15 @@
     margin-top: -10px;
     letter-spacing: 3px;
     font-weight: 600;
+    /* color: rgb(97, 92, 92); */
+    color: rgb(112, 192, 112);
 }
 
 .userName {
     margin: auto;
     flex: 2;
-}
-
-.btn {
-    margin-right: 30px;
+    font-family: 'Work Sans',
+        sans-serif;
+    letter-spacing: 0.5px;
+    color: dimgray;
 }
