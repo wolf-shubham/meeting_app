@@ -8,6 +8,7 @@ import Error from './Pages/Error/Error';
 import CreateMeeting from './Pages/AddMeeting/CreateMeeting';
 import EditMeeting from './Pages/EditMeeting/EditMeeting'
 import LandingPage from './Pages/LandingPage/LandingPage';
+import UpdateUser from './Pages/UpdateUser/UpdateUser';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path='/register' component={Register} />
         <Route path='/addmeeting' component={CreateMeeting} />
         <Route path='/meeting/:id' component={EditMeeting} />
+        <Route path='/editUser' component={UpdateUser} />
         <Route path='*' component={Error} />
       </Switch>
       <Footer />
