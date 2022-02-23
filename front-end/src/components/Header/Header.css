@@ -35,7 +35,7 @@
 }
 
 .userName {
-    margin: auto;
+    margin: auto -80px;
     flex: 2;
     font-family: 'Work Sans',
         sans-serif;

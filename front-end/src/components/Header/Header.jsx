@@ -9,8 +9,8 @@ import './Header.css'
 
 const useStyles = makeStyles((theme) => ({
     btns: {
-        margin: "auto 30px",
-        width: '8%'
+        margin: "auto 40px",
+        width: '8%',
     }
 }));
 
