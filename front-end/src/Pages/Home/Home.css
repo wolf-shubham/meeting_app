@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Praise&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+
+.homeTitle {
+    /* font-family: 'Indie Flower',cursive; */
+    /* font-family: 'Praise', cursive; */
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 50px;
+    text-align: center;
+    letter-spacing: 1px;
+}

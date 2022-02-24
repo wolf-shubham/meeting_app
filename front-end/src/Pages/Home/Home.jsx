@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteMeetingActions, getMeetings } from '../../stateManagement/actions/meetingActions'
+import './Home.css'
 
 function Home() {
 
@@ -35,7 +36,7 @@ function Home() {
 
     return (
         <>
-            <h1 className='homeTitle'>your meetings</h1>
+            <h1 className='homeTitle'>your meetings...</h1>
             <Link to='/addmeeting'>
                 <Button>Add Meeting</Button>
             </Link>
