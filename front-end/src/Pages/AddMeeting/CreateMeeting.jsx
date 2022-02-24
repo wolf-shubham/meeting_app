@@ -71,14 +71,12 @@ function CreateMeeting() {
 
                 /> */}
                 <input type="radio" id="low" name="fav_language" value="low" onChange={(e) => setCategory(e.target.value)} />
-                <label for="html">HTML</label><br />
-                <input type="radio" id="medium" name="fav_language" value="medium" onChange={(e) => setCategory(e.target.value)} />
-                <label for="css">CSS</label><br />
+                <label for="html">Low</label><br />
                 <input type="radio" id="high" name="fav_language" value="high" onChange={(e) => setCategory(e.target.value)} />
-                <label for="javascript">JavaScript</label><br />
+                <label for="javascript">High</label><br />
                 <TextField
                     id="datetime-local"
-                    label="Next appointment"
+                    label="Date & Time"
                     type="datetime-local"
                     defaultValue=''
                     className=''

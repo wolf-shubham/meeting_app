@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { deleteMeetingActions, getMeetings } from '../../stateManagement/actions/meetingActions'
 import './Home.css'
 
+
 function Home() {
 
     const dispatch = useDispatch()
@@ -37,26 +38,50 @@ function Home() {
     return (
         <>
             <h1 className='homeTitle'>your meetings...</h1>
-            <Link to='/addmeeting'>
-                <Button>Add Meeting</Button>
+            <Link to='/addmeeting' className='link'>
+                <Button variant="contained" color="primary" style={{ margin: 'auto' }}>Add Meeting</Button>
             </Link>
             {loading && <CircularProgress />}
-            {
-                meetings?.map(meeting => (
-                    <Card key={meeting._id}>
-                        <span>
-                            <h1>{meeting.title}</h1>
-                        </span>
-                        <h3>{meeting.description}</h3>
-                        <h4>Created At :{meeting.date}</h4>
-                        <div>
-                            <Button href={`/meeting/${meeting._id}`}>Edit</Button>
-                            <Button onClick={() => deleteHandler(meeting._id)}>Delete</Button>
-                        </div>
-                    </Card>
-                ))
-            }
+            <div className="meetingContainer">
+                {
+                    meetings?.map(meeting => (
+                        <div className="singleMeeting">
+                            <Card key={meeting._id}>
+                                <div className="cardContainer">
+                                    <div className="meetingDetails">
+                                        <h1 className='meetingTitle'>{meeting.title}</h1>
+                                        <span>
+                                            {
+                                                meeting.category === 'low'
+                                                    ? <button className='buttonLow'>{meeting.category}</button>
+                                                    : <button className='buttonHigh'>{meeting.category}</button>
 
+                                            }
+                                        </span>
+                                        <h2 className='meetingTitle'>{meeting.description}</h2>
+                                        <h4 className='meetingTitle'>Deadline :{meeting.date}</h4>
+                                    </div>
+
+                                    <div className="meetingEditDelete">
+                                        <a href={`/meeting/${meeting._id}`} ><span className="material-icons editIcon" style={{ fontSize: '30px', marginRight: '10px' }}>
+                                            edit
+                                        </span></a>
+                                        <span className="material-icons" style={{ fontSize: '30px' }}
+                                            onClick={() => deleteHandler(meeting._id)}>
+                                            delete
+                                        </span>
+                                    </div>
+
+                                </div>
+                                {/* <div>
+                                    <Button href={`/meeting/${meeting._id}`}>Edit</Button>
+                                    <Button onClick={() => deleteHandler(meeting._id)}>Delete</Button>
+                                </div> */}
+                            </Card>
+                        </div>
+                    ))
+                }
+            </div>
         </>
     )
 }
