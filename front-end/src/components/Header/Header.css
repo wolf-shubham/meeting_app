@@ -35,10 +35,22 @@
 }
 
 .userName {
-    margin: auto -80px;
-    flex: 2;
     font-family: 'Work Sans',
         sans-serif;
     letter-spacing: 0.5px;
     color: dimgray;
+    margin-right: 25px;
+}
+
+.namePic {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 5rem;
+}
+
+.displayPic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }

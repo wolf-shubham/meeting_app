@@ -35,7 +35,7 @@ function Home() {
 
     return (
         <>
-            <h1>Home Page</h1>
+            <h1 className='homeTitle'>your meetings</h1>
             <Link to='/addmeeting'>
                 <Button>Add Meeting</Button>
             </Link>

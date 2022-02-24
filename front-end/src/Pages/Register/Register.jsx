@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import logo from '../../images/background.png'
-import { Avatar, Button, TextField, Typography } from '@material-ui/core'
+import { Avatar, Button, TextField } from '@material-ui/core'
 import './Register.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { userRegisterAction } from '../../stateManagement/actions/userActions'
@@ -12,7 +12,7 @@ const Register = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [pic, setPic] = useState('')
+    const [pic, setPic] = useState('https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg')
 
 
     const history = useHistory()
@@ -26,10 +26,32 @@ const Register = () => {
         }
     }, [history, userInfo])
 
+    const postDetails = (profilepic) => {
+
+        const data = new FormData()
+        data.append("file", profilepic)
+        data.append("upload_preset", "meeting_app")
+        data.append("cloud_name", "wolf-shubham")
+        fetch("https://api.cloudinary.com/v1_1/wolf-shubham/image/upload", {
+            method: "post",
+            body: data
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                setPic(data.url)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+
     const submitHandler = async (e) => {
         e.preventDefault()
         dispatch(userRegisterAction(name, email, password, pic))
     }
+
 
     return (
         <>
@@ -78,8 +100,7 @@ const Register = () => {
                             label="Profile Pic"
                             type="file"
                             id="pic"
-                            value={pic}
-                            onChange={(e) => setPic(e.target.value)}
+                            onChange={(e) => postDetails(e.target.files[0])}
                         />
                         <Button
                             type="submit"

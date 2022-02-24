@@ -1,16 +1,18 @@
 import { Button, TextField } from '@material-ui/core'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { createMeetingActions } from '../../stateManagement/actions/meetingActions'
 
 function CreateMeeting() {
-    const history = useHistory()
-    const dispatch = useDispatch()
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [category, setCategory] = useState('')
+
+    const history = useHistory()
+    const dispatch = useDispatch()
+
 
     const createMeeting = useSelector((state) => state.createMeeting)
     const { loading, meeting, error } = createMeeting
@@ -28,6 +30,9 @@ function CreateMeeting() {
         history.push('/home')
     }
 
+    useEffect(() => {
+
+    }, [meeting])
 
     return (
         <>
@@ -54,7 +59,7 @@ function CreateMeeting() {
                     onChange={(e) => setDescription(e.target.value)}
 
                 />
-                <TextField
+                {/* <TextField
                     variant="outlined"
                     margin="normal"
                     required
@@ -64,7 +69,13 @@ function CreateMeeting() {
                     name="Category"
                     onChange={(e) => setCategory(e.target.value)}
 
-                />
+                /> */}
+                <input type="radio" id="low" name="fav_language" value="low" onChange={(e) => setCategory(e.target.value)} />
+                <label for="html">HTML</label><br />
+                <input type="radio" id="medium" name="fav_language" value="medium" onChange={(e) => setCategory(e.target.value)} />
+                <label for="css">CSS</label><br />
+                <input type="radio" id="high" name="fav_language" value="high" onChange={(e) => setCategory(e.target.value)} />
+                <label for="javascript">JavaScript</label><br />
                 <TextField
                     id="datetime-local"
                     label="Next appointment"

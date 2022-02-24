@@ -44,7 +44,7 @@ export const userRegisterAction = (name, email, password, pic) => async (dispatc
         }, config)
         console.log(data)
         dispatch({ type: USER_REGISTER_SUCCESS, payload: data })
-        // dispatch({ type: USER_LOGIN_SUCCESS, payload: data })
+        dispatch({ type: USER_LOGIN_SUCCESS, payload: data })
         localStorage.setItem('userInfo', JSON.stringify(data))
 
     } catch (error) {
@@ -58,7 +58,7 @@ export const userRegisterAction = (name, email, password, pic) => async (dispatc
 }
 
 
-export const updateUser = (user) => async (dispatch, getState) => {
+export const updateProfile = (user) => async (dispatch, getState) => {
     try {
         dispatch({ type: USER_UPDATE_REQUEST })
 
@@ -73,6 +73,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
         }
         const { data } = await axios.post('/user/updateUser', user, config)
         dispatch({ type: USER_UPDATE_SUCCESS, payload: data })
+        dispatch({ type: USER_LOGIN_SUCCESS, payload: data })
         localStorage.setItem('userInfo', JSON.stringify(data))
 
 

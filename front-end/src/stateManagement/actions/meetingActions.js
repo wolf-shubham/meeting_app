@@ -40,7 +40,7 @@ export const createMeetingActions = (title, description, category) => async (dis
 
         const { data } = await axios.post('/meeting/addmeeting',
             { title, description, category }, config)
-
+        console.log(data)
         dispatch({
             type: CREATE_MEETING_SUCCESS,
             payload: data

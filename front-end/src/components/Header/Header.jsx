@@ -1,6 +1,6 @@
 import { Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
 import { userLogout } from '../../stateManagement/actions/userActions'
@@ -33,6 +33,8 @@ function Header() {
     const registerHandle = () => {
         history.push('/register')
     }
+
+    useEffect(() => { }, [userInfo]);
     return (
 
         <>
@@ -40,7 +42,10 @@ function Header() {
                 <Link to='/home' className='homelink'>
                     <div ><h1 className='title'>.meeting</h1></div>
                 </Link>
-                <h2 className='userName'>{userInfo?.name.toUpperCase()}</h2>
+                <div className="namePic">
+                    <h2 className='userName'>{userInfo?.name.toUpperCase()}</h2>
+                    <a href="/editUser"><img src={userInfo.pic} alt="display pic" className='displayPic' href='/editUser' /></a>
+                </div>
                 {
                     userInfo
                         ? <Button
