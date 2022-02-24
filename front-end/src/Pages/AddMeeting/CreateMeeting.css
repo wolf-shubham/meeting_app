@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+
+.createTitle {
+    font-family: 'Ubuntu Mono',
+        monospace;
+    font-size: 50px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.createForm {
+    width: 80%;
+    margin: 20px auto;
+    border: 1px solid red;
+    padding: 25px 40px;
+}
+
+.formContainer {
+    /* border: 1px solid red; */
+}
+
+.priorityTitle {
+    width: 80%;
+    margin: 20px auto;
+    padding-left: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.radioPriority {
+    width: 40%;
+    margin-right: 35%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
