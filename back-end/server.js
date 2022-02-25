@@ -1,6 +1,7 @@
 const express = require('express')
 const dotenv = require('dotenv')
 const mongoose = require('mongoose')
+const path = require('path')
 
 const userRoutes = require('./routes/userRoutes')
 const meetingRoutes = require('./routes/meetingRoutes')
@@ -15,6 +16,22 @@ app.use('/user', userRoutes)
 app.use('/meeting', meetingRoutes)
 app.use(errorHandler)
 
+__dirname = path.resolve()
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '/front-end/build')))
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'front-end', 'build', 'index.html'))
+    })
+} else {
+    app.get(('/'), (req, res) => {
+        res.send('server working....')
+    })
+}
+
+app.get(('/'), (req, res) => {
+    res.send('server working....')
+})
 
 mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
@@ -23,6 +40,6 @@ mongoose.connect(process.env.MONGODB_URL, {
     .catch((err) => console.log(err));
 
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || 5000, () => {
     console.log(`server started on PORT ${PORT}`)
 })

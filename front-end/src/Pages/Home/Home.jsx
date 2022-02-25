@@ -75,10 +75,6 @@ function Home() {
                                     </div>
 
                                 </div>
-                                {/* <div>
-                                    <Button href={`/meeting/${meeting._id}`}>Edit</Button>
-                                    <Button onClick={() => deleteHandler(meeting._id)}>Delete</Button>
-                                </div> */}
                             </Card>
                         </div>
                     ))
