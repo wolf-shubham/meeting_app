@@ -61,7 +61,7 @@ function Home() {
                                             }
                                         </span>
                                         <h2 className='meetingTitle'>{meeting.description}</h2>
-                                        <h4 className='meetingTitle'>Deadline :{meeting.date}</h4>
+                                        <h4 className='meetingTitle'>Deadline Date : {meeting.date} , {meeting.time}</h4>
                                     </div>
 
                                     <div className="meetingEditDelete">

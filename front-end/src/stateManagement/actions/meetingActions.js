@@ -24,7 +24,7 @@ export const getMeetings = () => async (dispatch, getState) => {
     }
 }
 
-export const createMeetingActions = (title, description, category) => async (dispatch, getState) => {
+export const createMeetingActions = (title, description, category, date, time) => async (dispatch, getState) => {
     try {
         dispatch({
             type: CREATE_MEETING_REQUEST
@@ -39,7 +39,7 @@ export const createMeetingActions = (title, description, category) => async (dis
         }
 
         const { data } = await axios.post('/meeting/addmeeting',
-            { title, description, category }, config)
+            { title, description, category, date, time }, config)
         console.log(data)
         dispatch({
             type: CREATE_MEETING_SUCCESS,
@@ -53,7 +53,7 @@ export const createMeetingActions = (title, description, category) => async (dis
 }
 
 
-export const updateMeetingActions = (id, title, description, category) => async (dispatch, getState) => {
+export const updateMeetingActions = (id, title, description, category, date, time) => async (dispatch, getState) => {
     try {
         dispatch({
             type: UPDATE_MEETING_REQUEST
@@ -68,7 +68,7 @@ export const updateMeetingActions = (id, title, description, category) => async 
         }
 
         const { data } = await axios.put(`/meeting/${id}`,
-            { title, description, category }, config)
+            { title, description, category, date, time }, config)
 
         dispatch({
             type: UPDATE_MEETING_SUCCESS,

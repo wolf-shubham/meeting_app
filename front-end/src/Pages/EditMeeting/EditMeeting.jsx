@@ -12,6 +12,8 @@ function EditMeeting({ match, history }) {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [category, setCategory] = useState('')
+    const [date, setDate] = useState('')
+    const [time, setTime] = useState('')
 
     const updateMeeting = useSelector((state) => state.updateMeeting)
     const { loading, meeting, error } = updateMeeting
@@ -24,6 +26,8 @@ function EditMeeting({ match, history }) {
             setTitle(data.title)
             setDescription(data.description)
             setCategory(data.category)
+            setDate(data.date)
+            setTime(data.time)
             // console.log(data)
         }
         fetching()
@@ -33,11 +37,13 @@ function EditMeeting({ match, history }) {
         setTitle('')
         setDescription('')
         setCategory('')
+        setDate('')
+        setTime('')
     }
 
     const updateHandler = (e) => {
         e.preventDefault();
-        dispatch(updateMeetingActions(match.params.id, title, description, category))
+        dispatch(updateMeetingActions(match.params.id, title, description, category, date, time))
         resetHandler()
         history.push('/home')
     }
@@ -45,7 +51,7 @@ function EditMeeting({ match, history }) {
 
     return (
         <>
-            <div className='createTitle'>Create Meeting</div>
+            <div className='createTitle'>Edit Meeting</div>
             {loading && <CircularProgress />}
             <form className='' onSubmit={updateHandler} noValidate>
                 <div className="formContainer">
@@ -81,9 +87,11 @@ function EditMeeting({ match, history }) {
                             <label for="javascript">High</label><br />
                         </span>
                     </h3> */}
-                    <span className='dateTime' style={{ margin: '30px 10%' }}>
-                        <h3 className='dateTitle'>Date & Time : </h3>
-                        <input type="datetime-local" id="dateTime" name="Time Date"></input>
+                    <span className='dateTime'>
+                        <h3 className='dateTitle'>Date : </h3>
+                        <input type="date" id="date" name="Date" value={date} onChange={(e) => setDate(e.target.value)}></input>
+                        <h3 className='dateTitle'>Time : </h3>
+                        <input type="time" id="time" name="Time" value={time} onChange={(e) => setTime(e.target.value)}></input>
                     </span>
 
                     <Button

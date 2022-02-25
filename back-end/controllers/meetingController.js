@@ -6,13 +6,13 @@ const getMeetings = async (req, res) => {
 }
 
 const createMeeting = async (req, res) => {
-    const { title, description, category } = req.body
+    const { title, description, category, time, date } = req.body
 
-    if (!title || !description || !category) {
+    if (!title || !description || !category || !time || !date) {
 
         return res.status(400).json("Please Fill all the feilds");
     } else {
-        const meeting = new Meeting({ user: req.user._id, title, description, category });
+        const meeting = new Meeting({ user: req.user._id, title, description, category, date, time });
 
         const createdMeeting = await meeting.save();
 
@@ -32,7 +32,7 @@ const getMeetingById = async (req, res) => {
 }
 
 const updateMeeting = async (req, res) => {
-    const { title, description, category } = req.body
+    const { title, description, category, date, time } = req.body
     const meeting = await Meeting.findById(req.params.id)
     if (meeting.user.toString() !== req.user._id.toString()) {
         return res.status(403).json('you can not update others meeting')
@@ -41,6 +41,8 @@ const updateMeeting = async (req, res) => {
         meeting.title = title
         meeting.description = description
         meeting.category = category
+        meeting.date = date
+        meeting.time = time
 
         const updatedMeeting = await meeting.save()
         return res.status(200).json(updatedMeeting)

@@ -19,7 +19,15 @@ const meetingSchema = mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             required: true,
             ref: 'User'
-        }
+        },
+        date: {
+            type: String,
+            required: true
+        },
+        time: {
+            type: String,
+            required: true
+        },
     },
     {
         timestamps: true

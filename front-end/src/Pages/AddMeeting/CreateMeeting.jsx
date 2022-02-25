@@ -10,6 +10,8 @@ function CreateMeeting() {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [category, setCategory] = useState('')
+    const [date, setDate] = useState('')
+    const [time, setTime] = useState('')
 
     const history = useHistory()
     const dispatch = useDispatch()
@@ -26,7 +28,8 @@ function CreateMeeting() {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        dispatch(createMeetingActions(title, description, category))
+        dispatch(createMeetingActions(title, description, category, date, time))
+        // console.log(date.toString(), time)
         resetHandler()
         history.push('/home')
     }
@@ -75,14 +78,16 @@ function CreateMeeting() {
                     <h3 className='priorityTitle'>Priority :
                         <span className='radioPriority'>
                             <input type="radio" id="low" name="fav_language" value="low" onChange={(e) => setCategory(e.target.value)} />
-                            <label for="html">Low</label><br />
+                            <label >Low</label>
                             <input type="radio" id="high" name="fav_language" value="high" onChange={(e) => setCategory(e.target.value)} />
-                            <label for="javascript">High</label><br />
+                            <label >High</label>
                         </span>
                     </h3>
                     <span className='dateTime'>
-                        <h3 className='dateTitle'>Date & Time : </h3>
-                        <input type="datetime-local" id="dateTime" name="Time Date"></input>
+                        <h3 className='dateTitle'>Date : </h3>
+                        <input type="date" id="date" name="Date" value={date} onChange={(e) => setDate(e.target.value)}></input>
+                        <h3 className='dateTitle'>Time : </h3>
+                        <input type="time" id="time" name="Time" value={time} onChange={(e) => setTime(e.target.value)}></input>
                     </span>
 
                     <Button
