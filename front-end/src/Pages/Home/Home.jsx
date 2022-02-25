@@ -41,12 +41,14 @@ function Home() {
             <Link to='/addmeeting' className='link'>
                 <Button variant="contained" color="primary" style={{ margin: 'auto' }}>Add Meeting</Button>
             </Link>
-            {loading && <CircularProgress />}
+            <div className="circleLoading">
+                {loading && <CircularProgress />}
+            </div>
             <div className="meetingContainer">
                 {
                     meetings?.map(meeting => (
-                        <div className="singleMeeting">
-                            <Card key={meeting._id}>
+                        <div className="singleMeeting" key={meeting._id}>
+                            <Card >
                                 <div className="cardContainer">
                                     <div className="meetingDetails">
                                         <h1 className='meetingTitle'>{meeting.title}</h1>

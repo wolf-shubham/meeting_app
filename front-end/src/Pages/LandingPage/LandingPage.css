@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+.landingContainer {
+    width: 100%;
+    padding-left: 50px;
+    display: flex;
+}
+
+.homeImage {
+    width: 50%;
+    margin-top: -30px;
+}
+
+.intro {
+    margin: 9% auto auto 8%;
+    font-family: 'Ubuntu',
+        sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 40px;
+    line-height: 4rem;
+    color: darkgray;
+}
+
+.schedule {
+    font-size: 60px;
+}

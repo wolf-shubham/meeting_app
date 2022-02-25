@@ -3,6 +3,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateMeetingActions } from '../../stateManagement/actions/meetingActions'
+import './EditMeeting.css'
 
 function EditMeeting({ match, history }) {
 
@@ -44,73 +45,67 @@ function EditMeeting({ match, history }) {
 
     return (
         <>
-            <div>Create Meeting</div>
+            <div className='createTitle'>Create Meeting</div>
             {loading && <CircularProgress />}
             <form className='' onSubmit={updateHandler} noValidate>
-                <TextField
-                    variant="outlined"
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="title"
-                    label="Title"
-                    name="Title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                />
-                <TextField
-                    variant="outlined"
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="description"
-                    label="Meeting Description"
-                    name="Description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
+                <div className="formContainer">
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        style={{ width: '80%', margin: '10px 10%' }}
+                        id="title"
+                        label="Title"
+                        name="Title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                    />
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        style={{ width: '80%', margin: '10px 10%' }}
+                        id="description"
+                        label="Meeting Description"
+                        name="Description"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
 
-                />
-                <TextField
-                    variant="outlined"
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="category"
-                    label="Category"
-                    name="Category"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
+                    />
 
-                />
-                <TextField
-                    id="datetime-local"
-                    label="Next appointment"
-                    type="datetime-local"
-                    defaultValue=''
-                    className=''
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                />
-                <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                    className
-                >Update Meeting
-                </Button>
-                <br />
-                <br />
-                <Button
-                    // stype="submit"
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                    className
-                    onClick={resetHandler}
-                >Reset Meeting
-                </Button>
+                    {/* <h3 className='priorityTitle'>Priority :
+                        <span className='radioPriority'>
+                            <input type="radio" id="low" name="fav_language" value="low" onChange={(e) => setCategory(e.target.value)} />
+                            <label for="html">Low</label><br />
+                            <input type="radio" id="high" name="fav_language" value="high" onChange={(e) => setCategory(e.target.value)} />
+                            <label for="javascript">High</label><br />
+                        </span>
+                    </h3> */}
+                    <span className='dateTime' style={{ margin: '30px 10%' }}>
+                        <h3 className='dateTitle'>Date & Time : </h3>
+                        <input type="datetime-local" id="dateTime" name="Time Date"></input>
+                    </span>
+
+                    <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        style={{ width: '80%', margin: '10px 10%' }}
+                        className
+                    >Update Meeting
+                    </Button>
+                    <Button
+                        // stype="submit"
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        style={{ width: '80%', margin: '10px 10%' }}
+                        className
+                        onClick={resetHandler}
+                    >Reset Meeting
+                    </Button>
+                </div>
             </form>
         </>
     )

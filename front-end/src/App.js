@@ -13,10 +13,12 @@ import UpdateUser from './Pages/UpdateUser/UpdateUser';
 
 function App() {
   // const user = true
+
   return (
     <BrowserRouter>
       <Header />
       <Switch>
+
         <Route path='/' exact component={LandingPage} />
         <Route path='/home' component={Home} />
         <Route path='/login' component={Login} />

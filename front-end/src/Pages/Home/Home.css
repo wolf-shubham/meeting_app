@@ -79,3 +79,8 @@
     text-decoration: none;
     color: green;
 }
+
+.circleLoading {
+    margin-left: 50%;
+    margin-top: 10px;
+}

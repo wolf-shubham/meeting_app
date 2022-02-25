@@ -80,8 +80,8 @@ function CreateMeeting() {
                             <label for="javascript">High</label><br />
                         </span>
                     </h3>
-                    <span>
-                        <label for="Date&Time">Date & Time :</label>
+                    <span className='dateTime'>
+                        <h3 className='dateTitle'>Date & Time : </h3>
                         <input type="datetime-local" id="dateTime" name="Time Date"></input>
                     </span>
 

@@ -10,21 +10,19 @@
 
 .createForm {
     width: 80%;
-    margin: 20px auto;
-    border: 1px solid red;
+    margin: 10px auto;
     padding: 25px 40px;
-}
-
-.formContainer {
-    /* border: 1px solid red; */
 }
 
 .priorityTitle {
     width: 80%;
-    margin: 20px auto;
+    margin: 15px auto;
     padding-left: 10px;
     display: flex;
     justify-content: space-between;
+    font-family: 'Poppins',
+        sans-serif;
+    letter-spacing: 1px;
 }
 
 .radioPriority {
@@ -33,4 +31,15 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+}
+
+.dateTime {
+    width: 46%;
+    margin: 10px 10%;
+    padding-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Poppins',
+        sans-serif;
+    letter-spacing: 1px;
 }
